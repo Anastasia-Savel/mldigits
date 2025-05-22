@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import seaborn as sns
@@ -24,24 +25,33 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# DataFrame с результатами
+df = pd.DataFrame(data=[['KNeighborsClassifier', 0.250],
+                        ['RandomForestClassifier', 0.240],
+                        ['GradientBoostingClassifier', 0.250],
+                        ['SVC', 0.290],
+                        ['MLPClassifier', 0.390]],
+                  columns=['model', 'accuracy'])
+
 # График сравнения accuracy
 sns.set_theme()
 fig, ax = plt.subplots(figsize=(10, 5))
 ax.set_title("Сравнение accuracy", fontsize=20, pad=14, color='#555555')
 sns.barplot(
-    x=['KNeighborsClassifier', 'RandomForestClassifier', 'GradientBoostingClassifier', 'SVC', 'MLPClassifier'],
-    y=[0.250, 0.240, 0.250, 0.290, 0.390],
+    x=df['model'],
+    y=df['accuracy'],
     ax=ax,
     color='#b11226',
     width=0.4
 )
 ax.set_xticklabels(
-    ['KNeighborsClassifier', 'RandomForestClassifier', 'GradientBoostingClassifier', 'SVC', 'MLPClassifier'],
+    df['model'],
     rotation=20,
     ha='right',
     fontsize=14,
     color='gray'
 )
+ax.set(xlabel=None)
 ax.set_ylabel('Accuracy', fontsize=14, color='gray')
 ax.yaxis.set_major_locator(ticker.MultipleLocator(0.1))
 ax.grid(False, axis='x')
