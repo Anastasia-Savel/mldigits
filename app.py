@@ -65,7 +65,7 @@ def set_page(page):
 
 # Левое меню
 with st.sidebar:
-    st.sidebar.title("Модели обучения")
+    st.title("Модели обучения")
     st.button("Сравнение моделей", on_click=set_page, args=('home',))
     st.button("KNeighborsClassifier", on_click=set_page, args=('KNeighborsClassifier',))
     st.button("RandomForestClassifier", on_click=set_page, args=('RandomForestClassifier',))
