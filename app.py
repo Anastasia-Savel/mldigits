@@ -82,7 +82,7 @@ if st.session_state.page == 'home':
 elif st.session_state.page == 'KNeighborsClassifier':
     st.header("KNeighborsClassifier")
     st.markdown("**Лучшие гиперпараметры:** {'n_neighbors': 5, 'weights': 'distance'}")
-    st.markdown("**Лучшая accuracy на обучающих данных:** 0.260")
+    st.markdown("**Лучшая accuracy на обучающих данных:** 0.266")
     st.markdown("<span style='color: #b11226'>**Accuracy на тестовых данных:**</span> 0.250", unsafe_allow_html=True)
     st.code("from sklearn.neighbors import KNeighborsClassifier\n"
             "from sklearn.model_selection import GridSearchCV\n"
